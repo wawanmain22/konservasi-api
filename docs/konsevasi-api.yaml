@@ -1,0 +1,624 @@
+openapi: "3.0.0"
+info:
+  title: Skema API Go Turtles Konservasi
+  description: Documentation for Go Turtles Conservation API
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8000"
+paths:
+  /api/pos:
+    get:
+      summary: Get all positions
+      tags: [Position]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Position"
+    post:
+      summary: Create a new position
+      tags: [Position]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePosition"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Position"
+  /api/pos/{id}:
+    put:
+      summary: Update a position
+      tags: [Position]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePosition"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Position"
+    delete:
+      summary: Delete a position
+      tags: [Position]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfully deleted
+
+  /api/penyu:
+    get:
+      summary: Get all turtle species
+      tags: [TurtleSpecies]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TurtleSpecies"
+    post:
+      summary: Create a new turtle species
+      tags: [TurtleSpecies]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTurtleSpecies"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TurtleSpecies"
+  /api/penyu/{id}:
+    put:
+      summary: Update a turtle species
+      tags: [TurtleSpecies]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTurtleSpecies"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TurtleSpecies"
+    delete:
+      summary: Delete a turtle species
+      tags: [TurtleSpecies]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfully deleted
+  /api/pendaratan:
+    get:
+      summary: Get all landing records
+      tags: [Landing]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LandingRecord"
+    post:
+      summary: Create a new landing record
+      tags: [Landing]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLandingRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LandingRecord"
+
+  /api/pendaratan/{id}:
+    put:
+      summary: Update a landing record
+      tags: [Landing]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLandingRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LandingRecord"
+
+  /api/persemaian:
+    get:
+      summary: Get all hatchery records
+      tags: [Hatchery]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HatcheryRecord"
+    post:
+      summary: Create a new hatchery record
+      tags: [Hatchery]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatcheryRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HatcheryRecord"
+
+  /api/persemaian/{id}:
+    put:
+      summary: Update a hatchery record
+      tags: [Hatchery]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatcheryRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HatcheryRecord"
+
+  /api/penetasan:
+    get:
+      summary: Get all hatching records
+      tags: [Hatching]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HatchingRecord"
+    post:
+      summary: Create a new hatching record
+      tags: [Hatching]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatchingRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HatchingRecord"
+
+  /api/penetasan/{id}:
+    put:
+      summary: Update a hatching record
+      tags: [Hatching]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatchingRecord"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HatchingRecord"
+
+  /api/tukik:
+    get:
+      summary: Get all hatchlings
+      tags: [Hatchling]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Hatchling"
+    post:
+      summary: Create a new hatchling
+      tags: [Hatchling]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatchling"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hatchling"
+
+  /api/tukik/{id}:
+    put:
+      summary: Update a hatchling
+      tags: [Hatchling]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateHatchling"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hatchling"
+
+  /api/pelepasan:
+    get:
+      summary: Get all releases
+      tags: [Release]
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Release"
+    post:
+      summary: Create a new release
+      tags: [Release]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRelease"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+
+  /api/pelepasan/{id}:
+    put:
+      summary: Update a release
+      tags: [Release]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRelease"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Release"
+
+components:
+  schemas:
+    Position:
+      type: object
+      properties:
+        id:
+          type: string
+        nama_pos:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+
+    UpdatePosition:
+      type: object
+      properties:
+        nama_pos:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+
+    TurtleSpecies:
+      type: object
+      properties:
+        id:
+          type: string
+        jenis_penyu:
+          type: string
+
+    UpdateTurtleSpecies:
+      type: object
+      properties:
+        jenis_penyu:
+          type: string
+
+    LandingRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        pos_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        jam_mendarat:
+          type: string
+          format: time
+        mendarat_bertelur:
+          type: integer
+        mendarat_tdk_bertelur:
+          type: integer
+        jumlah_telur:
+          type: integer
+        keterangan:
+          type: string
+
+    UpdateLandingRecord:
+      type: object
+      properties:
+        pos_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        jam_mendarat:
+          type: string
+          format: time
+        mendarat_bertelur:
+          type: integer
+        mendarat_tdk_bertelur:
+          type: integer
+        jumlah_telur:
+          type: integer
+        keterangan:
+          type: string
+
+    HatcheryRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        pendaratan_id:
+          type: string
+        penyu_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        no_sarang:
+          type: integer
+        jumlah_telur:
+          type: integer
+        keterangan:
+          type: string
+
+    UpdateHatcheryRecord:
+      type: object
+      properties:
+        pendaratan_id:
+          type: string
+        penyu_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        no_sarang:
+          type: integer
+        jumlah_telur:
+          type: integer
+        keterangan:
+          type: string
+
+    HatchingRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        persemaian_id:
+          type: string
+        penyu_id:
+          type: string
+        jmlh_telur_menetas:
+          type: integer
+        jmlh_telur_tdk_menetas:
+          type: integer
+        jmlh_tukik_hidup:
+          type: integer
+        jmlh_tukik_mati:
+          type: integer
+        lama_inkubasi:
+          type: string
+          format: date
+        keterangan:
+          type: string
+
+    UpdateHatchingRecord:
+      type: object
+      properties:
+        persemaian_id:
+          type: string
+        penyu_id:
+          type: string
+        jmlh_telur_menetas:
+          type: integer
+        jmlh_telur_tdk_menetas:
+          type: integer
+        jmlh_tukik_hidup:
+          type: integer
+        jmlh_tukik_mati:
+          type: integer
+        lama_inkubasi:
+          type: string
+          format: date
+        keterangan:
+          type: string
+
+    Hatchling:
+      type: object
+      properties:
+        id:
+          type: string
+        penetasan_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        penyu_id:
+          type: string
+        status:
+          type: string
+          enum: [karantina, dilepaskan]
+
+    UpdateHatchling:
+      type: object
+      properties:
+        penetasan_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        penyu_id:
+          type: string
+        status:
+          type: string
+          enum: [karantina, dilepaskan]
+
+    Release:
+      type: object
+      properties:
+        id:
+          type: string
+        tukik_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        tukik_dilepas:
+          type: integer
+        keterangan:
+          type: string
+
+    UpdateRelease:
+      type: object
+      properties:
+        tukik_id:
+          type: string
+        tanggal:
+          type: string
+          format: date
+        tukik_dilepas:
+          type: integer
+        keterangan:
+          type: string
