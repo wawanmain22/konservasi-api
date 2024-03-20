@@ -9,6 +9,10 @@ class Persemaian extends Model
 {
     use HasFactory;
 
+    protected $table = 'persemaian';
+
+    public $timestamps = false;
+
     protected $fillable = [
         'pendaratan_id',
         'penyu_id',

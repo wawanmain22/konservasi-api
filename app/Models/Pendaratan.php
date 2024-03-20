@@ -9,6 +9,10 @@ class Pendaratan extends Model
 {
     use HasFactory;
 
+    protected $table = 'pendaratan';
+
+    public $timestamps = false;
+
     protected $fillable = [
         'pos_id',
         'tanggal',
