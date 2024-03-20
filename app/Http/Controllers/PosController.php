@@ -19,18 +19,35 @@ class PosController extends Controller
      */
     public function index()
     {
+        // Ambil semua data pos
         $positions = Pos::all();
 
+        // Jika tidak ada data pos
+        if ($positions->isEmpty()) {
+            return response()->json([
+                'message' => 'No positions found',
+            ], 404);
+        }
+
+        // Jika ada data pos, kembalikan response dengan data pos
         return response()->json([
             'message' => 'List of all positions',
             'data' => GetPosResource::collection($positions),
         ]);
     }
 
+
     public function show($id)
     {
         // Temukan pos berdasarkan id
-        $pos = Pos::findOrFail($id);
+        $pos = Pos::find($id);
+
+        // Jika pos tidak ditemukan, kembalikan response error
+        if (!$pos) {
+            return response()->json([
+                'message' => 'Pos with the given ID does not exist',
+            ], 404);
+        }
 
         // Return response
         return response()->json([
@@ -38,6 +55,7 @@ class PosController extends Controller
             'data' => new GetPosResource($pos), // Menggunakan GetPosResource untuk menampilkan detail pos
         ]);
     }
+
 
     public function store(Request $request)
     {
@@ -65,7 +83,14 @@ class PosController extends Controller
         $request->validate(Pos::updateValidationRules($id));
 
         // Temukan pos berdasarkan id
-        $pos = Pos::findOrFail($id);
+        $pos = Pos::find($id);
+
+        // Jika pos tidak ditemukan, kembalikan response error
+        if (!$pos) {
+            return response()->json([
+                'message' => 'Pos with the given ID does not exist',
+            ], 404);
+        }
 
         // Update pos
         $pos->nama_pos = $request->nama_pos;
@@ -81,10 +106,18 @@ class PosController extends Controller
         ]);
     }
 
+
     public function destroy($id)
     {
         // Temukan pos berdasarkan id
-        $pos = Pos::findOrFail($id);
+        $pos = Pos::find($id);
+
+        // Jika pos tidak ditemukan, kembalikan response error
+        if (!$pos) {
+            return response()->json([
+                'message' => 'Pos with the given ID does not exist',
+            ], 404);
+        }
 
         // Hapus pos
         $pos->delete();
